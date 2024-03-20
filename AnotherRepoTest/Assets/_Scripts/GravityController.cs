@@ -16,21 +16,21 @@ public class GravityController : MonoBehaviour
             if (currentY < 0)
             {
                 GravitateUp();
-            } 
+            }
             else if (currentY > 0)
             {
                 GravitateDown();
-            } 
+            }
         }
+    }
 
-        void GravitateUp()
-        {
-            Physics.gravity = new Vector3(0, 9.8f, 0);
-        }
+    void GravitateUp()
+    {
+        Physics.gravity = new Vector3(0, 9.8f, 0);
+    }
 
-        void GravitateDown()
-        {
-            Physics.gravity = new Vector3(0, -9.8f, 0);
-        }
+    void GravitateDown()
+    {
+        Physics.gravity = new Vector3(0, -9.8f, 0);
     }
 }
