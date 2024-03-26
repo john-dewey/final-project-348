@@ -16,8 +16,19 @@ public class FollowCam : MonoBehaviour
     {
         if (target)
         {
+            float yPos = 0;
+
+            if (target.position.y < 10)
+            {
+                yPos = 0;
+            }
+            if (target.position.y > 10)
+            {
+                yPos = 20;
+            }
+
             Vector3 targetV = target.position;
-            Vector3 normalized = new Vector3(targetV.x,transform.position.y,-10);
+            Vector3 normalized = new Vector3(targetV.x, yPos, -10);
 
             transform.position = normalized;
         }
