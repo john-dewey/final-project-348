@@ -28,21 +28,6 @@ public class Player : MonoBehaviour
     {
         //Move
         Move(_transformX.position, _transformY.position);
-
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space))  //makes player jump
-        {
-            if (Physics.gravity.y < 0)
-            {
-                jumpHeight = new Vector3(0,6,0);
-            }
-            else
-            {
-                jumpHeight = new Vector3(0,-6,0);
-            }
-
-            GetComponent<Rigidbody>().AddForce(jumpHeight, ForceMode.Impulse);
-        }
     }
 
 
