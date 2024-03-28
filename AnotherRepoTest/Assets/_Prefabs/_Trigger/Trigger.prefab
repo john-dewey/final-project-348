@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4407909466416063611}
   - component: {fileID: 4407909466416063610}
   - component: {fileID: 4407909466416063614}
-  - component: {fileID: 4407909466416063600}
+  - component: {fileID: -4720725347686551500}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: GravityTrigger
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
---- !u!114 &4407909466416063600
+--- !u!114 &-4720725347686551500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

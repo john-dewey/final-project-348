@@ -17,7 +17,8 @@ public class GravityController : MonoBehaviour
             {
                 GravitateUp();
             }
-            else if (currentY > 0)
+            
+            else
             {
                 GravitateDown();
             }
