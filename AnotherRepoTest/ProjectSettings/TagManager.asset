@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Player
   - Ground
-  - 
+  - Parallax
   - 
   - 
   - 
@@ -42,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Parallax
+    uniqueID: 2668732215
+    locked: 0
+  - name: Player
+    uniqueID: 763684223
     locked: 0
