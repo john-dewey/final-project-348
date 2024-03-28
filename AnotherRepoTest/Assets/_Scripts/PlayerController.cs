@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _speed = 0.05f;
+    private float _speed = 10.0f;
     private bool _isGrounded;
     private Transform _transform;
     private Vector3 _currentPosition;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        float thrust = 300.0f;
+        float thrust = 30.0f;
 
         if (Physics.gravity.y < 0)
         {
@@ -48,29 +48,18 @@ public class PlayerController : MonoBehaviour
             thrust *= -1;
         }
 
-        _rb.AddForce(transform.up * thrust);
+        _rb.AddForce(transform.up * _speed * thrust);
 
 
     }
 
     void Move()
     {
-        _currentPosition = _transform.position;
-
-        float userInput = Input.GetAxis("Horizontal");
-
-
-        if (userInput < 0)
-        {
-            _currentPosition -= new Vector3(_speed, 0);
-        }
-        if (userInput > 0)
-        {
-            _currentPosition += new Vector3(_speed, 0);
-        }
-
-
-        _transform.position = _currentPosition;
+        // Set the velcoity to move 10 meters per second
+        float translation = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
+        
+        //Uodate translation vector
+        transform.Translate(translation, 0, 0);
     }
 
     void OnCollisionEnter(Collision collision)
