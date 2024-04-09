@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
         _transform = gameObject.GetComponent<Transform>();
         _rb = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
