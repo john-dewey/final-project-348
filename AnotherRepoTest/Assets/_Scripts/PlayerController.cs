@@ -64,13 +64,10 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        float direction = Input.GetAxis("Horizontal");
-
-        float translation = direction * _speed * Time.deltaTime;
+        float translation = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
 
         if(_isGrounded){
 
-            //if(Input.GetAxis())
             _animator.Play("walk");
         }
         transform.Translate(translation, 0, 0);
