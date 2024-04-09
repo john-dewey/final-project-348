@@ -34,28 +34,29 @@ public class PlayerController : MonoBehaviour
             Move();
         }
         else{
+            
             Idle();
         }
         
     }
 
     void Idle(){
-        if(_isGrounded){
-            _animator.Play("idle");
-        }
+
+        _animator.Play("idle");
     }
     void Jump()
     {
-        _animator.Play("jump");
-
         float thrust = 30.0f;
 
         if (Physics.gravity.y < 0)
         {
+            _animator.Play("jump");
             thrust *= 1;
         }
         else
         {
+
+            _animator.Play("jump");
             thrust *= -1;
         }
 
@@ -65,17 +66,13 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         float translation = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
-
-        if(_isGrounded){
-
-            _animator.Play("walk");
-        }
+        _animator.Play("walk");
         transform.Translate(translation, 0, 0);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag != "GravityTrigger")
+        if (collision.gameObject.tag == "Ground")
         {
             this._isGrounded = true;
         }
