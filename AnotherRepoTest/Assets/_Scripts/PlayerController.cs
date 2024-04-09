@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,12 +50,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleAttack()
-    {
-        if (Input.GetButtonDown("Fire1") && _isGrounded)
         {
-            Attack();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                StartCoroutine(AttackCoroutine());
+            }
         }
+
+    IEnumerator AttackCoroutine()
+    {
+        _animator.SetBool("Fire", true);
+
     }
+
 
     void Idle()
     {
