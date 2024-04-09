@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
             this._isGrounded = false;
         }
 
-        else if(Input.GetKeyDown(KeyCode.Z)){
+        else if(Input.GetKeyDown(KeyCode.Z) && _isGrounded){
 
             attack();
 

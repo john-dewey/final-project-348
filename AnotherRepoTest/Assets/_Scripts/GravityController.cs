@@ -21,11 +21,15 @@ public class GravityController : MonoBehaviour
 
             if (currentY < 0)
             {
+                _animator.Play("floating");
+
                 GravitateUp();
             }
             
             else
             {
+                _animator.Play("floating");
+                
                 GravitateDown();
             }
         }
@@ -33,15 +37,12 @@ public class GravityController : MonoBehaviour
 
     void GravitateUp()
     {
-        _animator.Play("floating");
 
         Physics.gravity = new Vector3(0, 9.8f, 0);
     }
 
     void GravitateDown()
-    {
-         _animator.Play("floating");
-         
+    {    
         Physics.gravity = new Vector3(0, -9.8f, 0);
     }
 }
