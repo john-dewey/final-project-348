@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         _animator.Play("jump");
 
-        float thrust = 30.0f * (Physics.gravity.y < 0 ? 1 : -1);
+        float thrust = 40.0f * (Physics.gravity.y < 0 ? 1 : -1);
         _rb.AddForce(transform.up * _speed * thrust);
     }
 
