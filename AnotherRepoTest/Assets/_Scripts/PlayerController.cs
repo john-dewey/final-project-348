@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         _animator.Play("jump");
 
-        float thrust = 30.0f * (Physics.gravity.y < 0 ? 1 : -1);
+        float thrust = 40.0f * (Physics.gravity.y < 0 ? 1 : -1);
         _rb.AddForce(transform.up * _speed * thrust);
     }
 
@@ -110,6 +110,23 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGrounded = false;
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            _isGrounded = false;
+    		transform.parent = null;
+        }
+
+        
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            _isGrounded = true;
+    		transform.parent = collision.gameObject.transform;
         }
     }
 }

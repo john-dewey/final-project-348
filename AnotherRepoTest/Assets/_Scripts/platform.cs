@@ -37,4 +37,18 @@ public class platform : MonoBehaviour
             movingRight = true; // Change direction to right
         }
     }
+
+    // void OnCollisionStay(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Player"))
+    //     {
+    //         float translation = transform.position.x;
+    //         collision.gameObject.transform.position = new Vector3(translation, collision.gameObject.transform.position.y, 0);
+
+
+    //     }
+    // }
+
+
+
 }
