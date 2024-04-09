@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Transform _transform;
     private Rigidbody _rb;
     private Animator _animator;
+    private SpriteRenderer _sprite;
 
 
     void Start()
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
         _transform = gameObject.GetComponent<Transform>();
         _rb = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
+        _sprite = gameObject.GetComponent<SpriteRenderer>();
 
         this._isGrounded = false;
     }
@@ -29,34 +31,59 @@ public class PlayerController : MonoBehaviour
             this._isGrounded = false;
         }
 
-        else if(Input.GetAxis("Horizontal") != 0){
+        else if(Input.GetKeyDown(KeyCode.Z) && _isGrounded){
+
+            attack();
+
+        }
+        // move
+
+        else if(Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0){
 
             Move();
         }
         else{
-            
             Idle();
         }
         
     }
 
     void Idle(){
-
-        _animator.Play("idle");
+        if(_isGrounded){
+            _animator.Play("idle");
+        }
     }
     void Jump()
     {
+
+        float direction = Input.GetAxis("Horizontal");
+        
+        if(direction > 0){
+        
+            _animator.Play("jump");
+
+        }
+        
+        else if(direction < 0){
+
+            _sprite.flipX = true;
+
+            _animator.Play("jump");
+        }
+
+        else{
+
+            _animator.Play("jump");
+        }
+
         float thrust = 30.0f;
 
         if (Physics.gravity.y < 0)
         {
-            _animator.Play("jump");
             thrust *= 1;
         }
         else
         {
-
-            _animator.Play("jump");
             thrust *= -1;
         }
 
@@ -65,14 +92,41 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        float translation = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
-        _animator.Play("walk");
+        _sprite.flipX = false;
+
+        float direction = Input.GetAxis("Horizontal");
+
+        float translation = direction * _speed * Time.deltaTime;
+
+        if(_isGrounded){
+
+            if(direction > 0){
+
+                _animator.Play("walk");
+
+            }
+
+            else if(direction < 0){
+
+                _sprite.flipX = true;
+                
+                _animator.Play("walk");
+            }
+
+            
+        }
         transform.Translate(translation, 0, 0);
+    }
+
+    void attack(){
+
+            _animator.Play("jump");
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag != "GravityTrigger")
         {
             this._isGrounded = true;
         }
