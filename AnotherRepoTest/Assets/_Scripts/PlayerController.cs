@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,132 +9,107 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _sprite;
 
-
     void Start()
     {
-        _transform = gameObject.GetComponent<Transform>();
-        _rb = gameObject.GetComponent<Rigidbody>();
-        _animator = gameObject.GetComponent<Animator>();
-        _sprite = gameObject.GetComponent<SpriteRenderer>();
-
-        this._isGrounded = false;
+        _transform = transform;
+        _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        _isGrounded = false;
     }
 
     void Update()
     {
-        // Jump
-        if (Input.GetButton("Jump") && _isGrounded)
+        HandleJump();
+        HandleMovement();
+        HandleAttack();
+    }
+
+    void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             Jump();
-            this._isGrounded = false;
-        }
-
-        else if(Input.GetKeyDown(KeyCode.Z) && _isGrounded){
-
-            attack();
-
-        }
-        // move
-
-        else if(Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0){
-
-            Move();
-        }
-        else{
-            Idle();
-        }
-        
-    }
-
-    void Idle(){
-        if(_isGrounded){
-            _animator.Play("idle");
+            _isGrounded = false;
         }
     }
-    void Jump()
+
+    void HandleMovement()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
 
-        float direction = Input.GetAxis("Horizontal");
-        
-        if(direction > 0){
-        
-            _animator.Play("jump");
-
-        }
-        
-        else if(direction < 0){
-
-            _sprite.flipX = true;
-
-            _animator.Play("jump");
-        }
-
-        else{
-
-            _animator.Play("jump");
-        }
-
-        float thrust = 30.0f;
-
-        if (Physics.gravity.y < 0)
+        if (horizontalInput != 0)
         {
-            thrust *= 1;
+            Move(horizontalInput);
         }
         else
         {
-            thrust *= -1;
+            Idle();
         }
+    }
 
+    void HandleAttack()
+    {
+        if (Input.GetButtonDown("Fire1") && _isGrounded)
+        {
+            Attack();
+        }
+    }
+
+    void Idle()
+    {
+        if (_isGrounded)
+        {
+            _animator.Play("idle");
+        }
+    }
+
+    void Jump()
+    {
+        _animator.Play("jump");
+
+        float thrust = 30.0f * (Physics.gravity.y < 0 ? 1 : -1);
         _rb.AddForce(transform.up * _speed * thrust);
     }
 
-    void Move()
+    void Move(float direction)
     {
-        _sprite.flipX = false;
-
-        float direction = Input.GetAxis("Horizontal");
-
-        float translation = direction * _speed * Time.deltaTime;
+        _sprite.flipX = direction < 0;
 
         if(_isGrounded){
-
-            if(direction > 0){
-
-                _animator.Play("walk");
-
-            }
-
-            else if(direction < 0){
-
-                _sprite.flipX = true;
-                
-                _animator.Play("walk");
-            }
-
             
+            _animator.Play("walk");
+
         }
+
+        else{
+
+            _animator.Play("jump");
+        }
+
+        float translation = direction * _speed * Time.deltaTime;
         transform.Translate(translation, 0, 0);
     }
 
-    void attack(){
-
-            _animator.Play("jump");
-
+    void Attack()
+    {
+        _animator.Play("attack");
+        // Implement attack logic here
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag != "GravityTrigger")
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.tag != "GravityTrigger")
         {
-            this._isGrounded = true;
+            _isGrounded = true;
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            this._isGrounded = false;
+            _isGrounded = false;
         }
     }
 }
