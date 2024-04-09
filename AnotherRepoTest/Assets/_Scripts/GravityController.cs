@@ -6,6 +6,12 @@ public class GravityController : MonoBehaviour
 {
 
     private Animator _animator;
+    static private GravityController _G;
+
+    void Awake()
+    {
+        _G = this;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +35,11 @@ public class GravityController : MonoBehaviour
                 GravitateDown();
             }
         }
+    }
+
+    public static void resetGravity()
+    {
+        _G.GravitateDown();
     }
 
     void GravitateUp()

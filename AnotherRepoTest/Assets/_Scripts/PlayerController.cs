@@ -23,6 +23,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Sprint
+        if (Input.GetKey("left shift"))
+        {
+            _speed = 20.0f;
+        }
+        else
+        {
+            _speed = 10.0f;
+        }
+
         // Jump
         if (Input.GetButton("Jump") && _isGrounded)
         {

@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
-    static private Main S;
-    public float gameRestartDelay = 2;
+    static private Main _S;
+    public float gameRestartDelay = 0.5f;
 
     void Awake()
     {
-        S = this;
+        _S = this;
     }
 
     void DelayedRestart()
@@ -20,11 +20,13 @@ public class Main : MonoBehaviour
 
     void Restart()
     {
-        SceneManager.LoadScene("Obstacle");                         
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);                         
     }
 
-    static public void HERO_DIED()
+    public static void HERO_DIED()
     {
-        S.DelayedRestart();                                                  
+        GravityController.resetGravity();
+        _S.DelayedRestart();                                               
     }
 }
