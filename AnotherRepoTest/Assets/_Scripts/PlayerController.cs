@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
         {
             _isGrounded = true;
         }
+
+
     }
 
     void OnCollisionExit(Collision collision)
