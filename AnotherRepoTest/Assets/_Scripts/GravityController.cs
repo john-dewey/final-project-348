@@ -7,6 +7,7 @@ public class GravityController : MonoBehaviour
 
     private Animator _animator;
     static private GravityController _G;
+private SpriteRenderer _sprite;
 
     void Awake()
     {
@@ -20,6 +21,8 @@ public class GravityController : MonoBehaviour
         {
             _animator = other.gameObject.GetComponent<Animator>();
 
+            _sprite = other.gameObject.GetComponent<SpriteRenderer>();
+
             Destroy(gameObject);
 
             float currentY = Physics.gravity.y;
@@ -27,6 +30,9 @@ public class GravityController : MonoBehaviour
 
             if (currentY < 0)
             {
+
+                _sprite.flipY = true;
+
                 _animator.Play("floating");
 
                 GravitateUp();
@@ -34,6 +40,8 @@ public class GravityController : MonoBehaviour
             
             else
             {
+                _sprite.flipY = false;
+
                 _animator.Play("floating");
                 
                 GravitateDown();
