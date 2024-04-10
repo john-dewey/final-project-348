@@ -53,15 +53,16 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                StartCoroutine(AttackCoroutine());
+                // StartCoroutine(AttackCoroutine());
             }
         }
 
-    IEnumerator AttackCoroutine()
-    {
-        _animator.SetBool("Fire", true);
+    // IEnumerator AttackCoroutine()
+    // {
+    //     _animator.SetBool("Fire", true);
 
-    }
+
+    // }
 
 
     void Idle()

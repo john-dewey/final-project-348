@@ -44,9 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Parallax
-    uniqueID: 2668732215
+  - name: Background
+    uniqueID: 3946938267
+    locked: 0
+  - name: Midground
+    uniqueID: 1894367849
+    locked: 0
+  - name: Foreground
+    uniqueID: 3395097793
     locked: 0
   - name: Player
     uniqueID: 763684223
+    locked: 0
+  - name: Parallax
+    uniqueID: 2668732215
     locked: 0
