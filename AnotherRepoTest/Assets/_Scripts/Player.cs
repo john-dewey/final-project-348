@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-            float thrust = 300.0f;
+            float thrust = 400.0f;
 
             if (Physics.gravity.y < 0)
             {
