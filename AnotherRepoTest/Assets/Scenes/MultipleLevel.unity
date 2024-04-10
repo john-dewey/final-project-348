@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 117126138}
   m_Layer: 0
   m_Name: Platform (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20188,7 +20188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606012278204908147, guid: 988546a826fc8164fbdd285d2d50c999, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6606012278204908147, guid: 988546a826fc8164fbdd285d2d50c999, type: 3}
       propertyPath: m_SortingLayerID
