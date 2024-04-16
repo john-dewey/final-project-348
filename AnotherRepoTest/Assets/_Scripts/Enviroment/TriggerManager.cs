@@ -13,7 +13,7 @@ public class TriggerManager : MonoBehaviour
         _renderer = other.gameObject.GetComponent<SpriteRenderer>();
         _animator = other.gameObject.GetComponent<Animator>();
 
-        if (other.CompareTag("Player") && this.gameObject.name == "GravityToken")
+        if (other.CompareTag("Player") && this.tag == "GravityTrigger")
         {
             Destroy(gameObject);
 

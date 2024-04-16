@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -46563,10 +46563,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4407909466416063614, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
 --- !u!4 &497410818 stripped
@@ -49588,10 +49584,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4407909466416063614, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
 --- !u!1 &1724735218
@@ -50269,6 +50261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992910812}
+  - component: {fileID: 1992910813}
   m_Layer: 0
   m_Name: GravityTriggers
   m_TagString: Untagged
@@ -50299,6 +50292,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1992910813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992910811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad33f51cd99d7b04586004a7d62a688f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objects: []
 --- !u!1 &2000537258
 GameObject:
   m_ObjectHideFlags: 0
@@ -50513,8 +50519,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4407909466416063614, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407909466416063614, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4407909466416063600, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
+    - {fileID: -678391956500796630, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
+    - {fileID: -4720725347686551500, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
 --- !u!1 &2055314436
 GameObject:
@@ -50793,8 +50808,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4407909466416063614, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
-      propertyPath: m_Constraints
-      value: 126
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
