@@ -23,7 +23,7 @@ public class StalaciteController : MonoBehaviour
         Destroy(gameObject);                      
     }
 
-    void isFalling()
+    public void isFalling()
     {
         hasFell = true;
     }
@@ -36,7 +36,7 @@ public class StalaciteController : MonoBehaviour
             Main.HERO_DIED();
         }
 
-        if (collision.gameObject.CompareTag("Ground") && hasFell)
+        if (collision.gameObject.CompareTag("Ground"))
         {
             DelayedDelete();
         }
