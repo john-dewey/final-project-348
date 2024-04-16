@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,62 +9,48 @@ public class PlayerController : MonoBehaviour
     private Transform _transform;
     private Rigidbody _rb;
     private Animator _animator;
-    private SpriteRenderer _sprite;
+    public bool Rightdirec = true;
 
     void Start()
     {
-        _transform = transform;
-        _rb = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
-        _sprite = GetComponent<SpriteRenderer>();
-        _isGrounded = false;
+        _transform = gameObject.GetComponent<Transform>();
+        _rb = gameObject.GetComponent<Rigidbody>();
+        _animator = gameObject.GetComponent<Animator>();
+        this._isGrounded = false;
     }
 
     void Update()
     {
-        HandleJump();
-        HandleMovement();
-        HandleAttack();
-    }
-
-    void HandleJump()
-    {
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        // Jump
+        if (Input.GetAxis("Vertical") > 0 && _isGrounded)
         {
             Jump();
-            _isGrounded = false;
+            this._isGrounded = false;
         }
-    }
-
-    void HandleMovement()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        if (horizontalInput != 0)
+        else if (Input.GetAxis("Horizontal") != 0)
         {
-            Move(horizontalInput);
+            Move();
+            // Change direction based on input
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                Rightdirec = true;
+            }
+            else
+            {
+                Rightdirec = false;
+            }
         }
+        else if (Input.GetButton("Jump")) // Check if the "top" key is pressed
+        {
+            Attack(); // Play attack animation
+        }
+
         else
         {
+            FlipPlayer();
             Idle();
         }
     }
-
-    void HandleAttack()
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                // StartCoroutine(AttackCoroutine());
-            }
-        }
-
-    // IEnumerator AttackCoroutine()
-    // {
-    //     _animator.SetBool("Fire", true);
-
-
-    // }
-
 
     void Idle()
     {
@@ -77,67 +64,110 @@ public class PlayerController : MonoBehaviour
     {
         _animator.Play("jump");
 
-        float thrust = 40.0f * (Physics.gravity.y < 0 ? 1 : -1);
-        _rb.AddForce(transform.up * _speed * thrust);
-    }
+        float thrust = 35.0f;
 
-    void Move(float direction)
-    {
-        _sprite.flipX = direction < 0;
-
-        if(_isGrounded){
-            
-            _animator.Play("walk");
-
+        if (Physics.gravity.y < 0)
+        {
+            thrust *= 1;
+        }
+        else
+        {
+            thrust *= -1;
         }
 
-        else{
-
-            _animator.Play("jump");
+        // Adjust jump direction based on gravity
+        if (Physics.gravity.y < 0)
+        {
+            _rb.AddForce(transform.up * _speed * thrust);
         }
-
-        float translation = direction * _speed * Time.deltaTime;
-        transform.Translate(translation, 0, 0);
+        else
+        {
+            _rb.AddForce(transform.up * _speed * -thrust);
+        }
     }
-
     void Attack()
     {
         _animator.Play("attack");
-        // Implement attack logic here
+        // Add any attack logic here, such as dealing damage to enemies
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    void Move()
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.tag != "GravityTrigger")
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float translation = horizontalInput * _speed * Time.deltaTime;
+
+        // Adjust movement direction based on gravity
+        // Check player's local rotation
+        Vector3 localRotation = transform.localRotation.eulerAngles;
+        bool isRotated180 = Mathf.Approximately(localRotation.z, 180f);
+
+        // Adjust movement direction based on rotation
+        // Adjust movement direction based on rotation
+        if (isRotated180)
         {
-            _isGrounded = true;
+            horizontalInput *= -1; // Reverse horizontal input if player is rotated 180 degrees on z-axis
+            translation = horizontalInput * _speed * Time.deltaTime;
         }
 
 
+        if (_isGrounded)
+        {
+            _animator.Play("walk");
+        }
+
+        transform.Translate(translation, 0, 0);
+
+        // Flip the sprite based on direction
+        if (horizontalInput > 0)
+        {
+            Rightdirec = true;
+            rotatePlayer(1);
+        }
+        else if (horizontalInput < 0)
+        {
+            Rightdirec = false;
+            rotatePlayer(-1);
+        }
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground" && collision.gameObject.tag != "GravityTrigger")
+        {
+            this._isGrounded = true;
+        }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.tag == "Ground")
         {
-            _isGrounded = false;
+            this._isGrounded = false;
         }
-
-        if (collision.gameObject.CompareTag("Platform"))
-        {
-            _isGrounded = false;
-    		transform.parent = null;
-        }
-
-        
     }
 
-    void OnCollisionStay(Collision collision)
+    void rotatePlayer(int direction)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        // Multiply the local scale by the direction to flip the sprite
+        Vector3 newScale = transform.localScale;
+        newScale.x = Mathf.Abs(newScale.x) * direction;
+        transform.localScale = newScale;
+    }
+
+    // Function to flip the player
+    void FlipPlayer()
+    {
+        Vector3 gravityDirection = Physics.gravity.normalized;
+        if (gravityDirection.y > 0 && !_isGrounded) // If gravity is pointing upward and player is not grounded
         {
-            _isGrounded = true;
-    		transform.parent = collision.gameObject.transform;
+            transform.rotation = Quaternion.Euler(0, 0, 180); // Rotate player 180 degrees around Z-axis (upside down)
+        }
+        else if (gravityDirection.y < 0 && _isGrounded) // If gravity is pointing downward and player is grounded
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0); // Rotate player back to normal (right side up)
         }
     }
+
 }
