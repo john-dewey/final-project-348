@@ -30,15 +30,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetAxis("Horizontal") != 0)
         {
             Move();
-            // Change direction based on input
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                Rightdirec = true;
-            }
-            else
-            {
-                Rightdirec = false;
-            }
         }
         else if (Input.GetButton("Jump")) // Check if the "top" key is pressed
         {
@@ -47,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
         else
         {
-            FlipPlayer();
             Idle();
         }
     }
@@ -76,14 +66,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Adjust jump direction based on gravity
-        if (Physics.gravity.y < 0)
-        {
-            _rb.AddForce(transform.up * _speed * thrust);
-        }
-        else
-        {
-            _rb.AddForce(transform.up * _speed * -thrust);
-        }
+        _rb.AddForce(transform.up * _speed * thrust);
     }
     void Attack()
     {
@@ -97,20 +80,6 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float translation = horizontalInput * _speed * Time.deltaTime;
 
-        // Adjust movement direction based on gravity
-        // Check player's local rotation
-        Vector3 localRotation = transform.localRotation.eulerAngles;
-        bool isRotated180 = Mathf.Approximately(localRotation.z, 180f);
-
-        // Adjust movement direction based on rotation
-        // Adjust movement direction based on rotation
-        if (isRotated180)
-        {
-            horizontalInput *= -1; // Reverse horizontal input if player is rotated 180 degrees on z-axis
-            translation = horizontalInput * _speed * Time.deltaTime;
-        }
-
-
         if (_isGrounded)
         {
             _animator.Play("walk");
@@ -121,12 +90,10 @@ public class PlayerController : MonoBehaviour
         // Flip the sprite based on direction
         if (horizontalInput > 0)
         {
-            Rightdirec = true;
             rotatePlayer(1);
         }
         else if (horizontalInput < 0)
         {
-            Rightdirec = false;
             rotatePlayer(-1);
         }
     }
@@ -154,20 +121,6 @@ public class PlayerController : MonoBehaviour
         Vector3 newScale = transform.localScale;
         newScale.x = Mathf.Abs(newScale.x) * direction;
         transform.localScale = newScale;
-    }
-
-    // Function to flip the player
-    void FlipPlayer()
-    {
-        Vector3 gravityDirection = Physics.gravity.normalized;
-        if (gravityDirection.y > 0 && !_isGrounded) // If gravity is pointing upward and player is not grounded
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180); // Rotate player 180 degrees around Z-axis (upside down)
-        }
-        else if (gravityDirection.y < 0 && _isGrounded) // If gravity is pointing downward and player is grounded
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0); // Rotate player back to normal (right side up)
-        }
     }
 
 }
