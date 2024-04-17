@@ -12,7 +12,6 @@ public class GravityController : MonoBehaviour
     void Awake()
     {
         _G = this;
-
     }
 
     // private void OnTriggerEnter(Collider other)
