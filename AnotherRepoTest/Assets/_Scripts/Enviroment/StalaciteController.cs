@@ -6,6 +6,7 @@ public class StalaciteController : MonoBehaviour
 {
     private Rigidbody _rb;
     public float deleteObjectDelay = 0.2f;
+    public bool hasFell = false;
 
     void start()
     {
@@ -20,6 +21,11 @@ public class StalaciteController : MonoBehaviour
     void Delete()
     {
         Destroy(gameObject);                      
+    }
+
+    public void isFalling()
+    {
+        hasFell = true;
     }
 
     void OnCollisionEnter(Collision collision)

@@ -34,6 +34,8 @@ public class TriggerManager : MonoBehaviour
             {
                 Rigidbody rb = currentObject.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
+                // StalaciteController sc = currentObject.GetComponent<StalaciteController>();
+                // sc.isFalling();
             }
         }
     }
