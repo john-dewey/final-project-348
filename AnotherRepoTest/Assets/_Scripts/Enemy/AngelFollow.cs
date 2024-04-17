@@ -8,6 +8,8 @@ public class AngelFollow : MonoBehaviour
     public float speed;
     private float distance;
 
+    public float offset;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +39,11 @@ public class AngelFollow : MonoBehaviour
 
         if(Physics.gravity.y < 0)
         {
-            abovePlayer.y = abovePlayer.y + 10;
+            abovePlayer.y = abovePlayer.y + offset;
         }
         else
         {
-            abovePlayer.y = abovePlayer.y - 10;
+            abovePlayer.y = abovePlayer.y - offset;
         }
         return abovePlayer;
     }
