@@ -7,18 +7,21 @@ public class AngelFollow : MonoBehaviour
     public GameObject player;
     public float speed;
     private float distance;
-
+    private Animator animator;
+    private SpriteRenderer sprite;
     public float offset;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = gameObject.GetComponent<Animator>();
+        sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.Play("follow");
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
