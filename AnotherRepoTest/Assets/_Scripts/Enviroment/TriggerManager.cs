@@ -28,14 +28,12 @@ public class TriggerManager : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Player") && this.gameObject.name == "StalaciteTrigger")
+        if (other.CompareTag("Player") && this.tag == "StalaciteTrigger")
         {
             foreach (GameObject currentObject in _objects)
             {
                 Rigidbody rb = currentObject.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
-                // StalaciteController sc = currentObject.GetComponent<StalaciteController>();
-                // sc.isFalling();
             }
         }
     }

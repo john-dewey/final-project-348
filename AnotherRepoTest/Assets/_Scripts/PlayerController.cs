@@ -105,6 +105,11 @@ public class PlayerController : MonoBehaviour
         {
             this._isGrounded = true;
         }
+        if(collision.gameObject.tag == "Platform")
+        {
+            this._isGrounded = true;
+    		transform.parent = collision.transform;
+		}
     }
 
     void OnCollisionExit(Collision collision)
@@ -113,6 +118,10 @@ public class PlayerController : MonoBehaviour
         {
             this._isGrounded = false;
         }
+        if(collision.gameObject.tag == "Platform"){
+    		transform.parent = null;
+            this._isGrounded = false;
+		}
     }
 
     void rotatePlayer(int direction)
