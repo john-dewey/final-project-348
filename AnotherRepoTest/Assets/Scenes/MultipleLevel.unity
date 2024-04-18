@@ -51469,7 +51469,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7135331326576701949, guid: 7ce5139a8d0993e479dfb9186b726f1e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ce5139a8d0993e479dfb9186b726f1e, type: 3}
 --- !u!1 &1229844477
 GameObject:
@@ -52110,6 +52111,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1306108576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7135331326576701948, guid: 7ce5139a8d0993e479dfb9186b726f1e, type: 3}
+  m_PrefabInstance: {fileID: 1225113488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1306108577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306108576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4681376cde3b145d6872b4cb2171be0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDistance: 5
 --- !u!4 &1311692194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4407909466416063613, guid: 3f2bb795f2801994c86db81c49963800, type: 3}
