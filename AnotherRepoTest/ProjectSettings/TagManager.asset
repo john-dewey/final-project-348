@@ -9,6 +9,10 @@ TagManager:
   - Platform
   - Spike
   - StalaciteTrigger
+  - JumpBoost
+  - Coin
+  - SpeedBoost
+  - Health
   layers:
   - Default
   - TransparentFX

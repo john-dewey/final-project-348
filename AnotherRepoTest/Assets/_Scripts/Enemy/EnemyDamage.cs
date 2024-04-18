@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             other.GetComponent<Health>()?.TakeDamage(damage);
-            Debug.Log("player is hit");
+            //Debug.Log("player is hit");
 
     }
 }
