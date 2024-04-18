@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,12 +8,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Animator _animator;
     public bool Rightdirec = true;
+    private BoxCollider _boxCollider;
 
     void Start()
     {
         _transform = gameObject.GetComponent<Transform>();
         _rb = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
+        _boxCollider = gameObject.GetComponent<BoxCollider>(); // Get the BoxCollider component
         this._isGrounded = false;
     }
 
@@ -122,5 +122,4 @@ public class PlayerController : MonoBehaviour
         newScale.x = Mathf.Abs(newScale.x) * direction;
         transform.localScale = newScale;
     }
-
 }

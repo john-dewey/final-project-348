@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class PlayerDamage : MonoBehaviour
 {
+    
     [SerializeField] public float damage;
 
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Enemy"))
             other.GetComponent<Health>()?.TakeDamage(damage);
 
     }

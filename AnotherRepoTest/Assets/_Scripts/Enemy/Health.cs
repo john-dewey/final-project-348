@@ -53,16 +53,18 @@ public class Health : MonoBehaviour
 
                 dead = true;
 
-                Invoke("Respawn", 2f);
-                // Respawn the player
-                Respawn();
+                // If the GameObject is tagged as "Player", respawn it instead of destroying it
+                if (gameObject.CompareTag("Player"))
+                {
+                    Respawn();
+                }
+                else
+                {
+                    // Destroy the GameObject when health reaches 0 or less if it's not the player
+                    Destroy(gameObject);
+                }
             }
         }
-    }
-
-    public void AddHealth(float _value)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 
     private IEnumerator Invulnerability()
@@ -82,7 +84,6 @@ public class Health : MonoBehaviour
 
     private void Respawn()
     {
-        
         // Reset the player's position to the initial respawn position
         transform.position = respawnPosition;
 
