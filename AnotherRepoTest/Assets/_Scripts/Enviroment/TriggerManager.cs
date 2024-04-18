@@ -36,5 +36,36 @@ public class TriggerManager : MonoBehaviour
                 rb.isKinematic = false;
             }
         }
+
+        if (other.CompareTag("Player") && this.tag == "JumpBoost")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._thrust += 15;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "Coin")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._score += 1;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "SpeedBoost")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._speed += 5;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "Health")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+        }
     }
 }

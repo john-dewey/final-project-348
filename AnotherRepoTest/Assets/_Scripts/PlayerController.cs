@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class PlayerController : MonoBehaviour
 {
-    private float _speed = 10.0f;
+    public float _speed = 10.0f;
+    public float _thrust = 45.0f;
+    public int _score;
     private bool _isGrounded;
     private Transform _transform;
     private Rigidbody _rb;
     private Animator _animator;
     public bool Rightdirec = true;
+    public float gameRestartDelay = 0.5f;
 
     void Start()
     {
@@ -17,6 +21,7 @@ public class PlayerController : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
         this._isGrounded = false;
+        this._score = 0;
     }
 
     void Update()
@@ -54,19 +59,17 @@ public class PlayerController : MonoBehaviour
     {
         _animator.Play("jump");
 
-        float thrust = 45.0f;
-
         if (Physics.gravity.y < 0)
         {
-            thrust *= 1;
+            _thrust *= 1;
         }
         else
         {
-            thrust *= -1;
+            _thrust *= -1;
         }
 
         // Adjust jump direction based on gravity
-        _rb.AddForce(transform.up * _speed * thrust);
+        _rb.AddForce(transform.up * _speed * _thrust);
     }
     void Attack()
     {
@@ -110,6 +113,11 @@ public class PlayerController : MonoBehaviour
             this._isGrounded = true;
     		transform.parent = collision.transform;
 		}
+        if (collision.gameObject.tag == "Spike")
+        {
+            GravityController.resetGravity();
+            DelayedRestart();     
+        }
     }
 
     void OnCollisionExit(Collision collision)
@@ -130,6 +138,14 @@ public class PlayerController : MonoBehaviour
         Vector3 newScale = transform.localScale;
         newScale.x = Mathf.Abs(newScale.x) * direction;
         transform.localScale = newScale;
+    }
+
+    void DelayedRestart()
+    {     
+        Destroy(gameObject);                                           
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);  
+        //Invoke(nameof(Restart), gameRestartDelay);
     }
 
 }

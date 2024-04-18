@@ -6,6 +6,7 @@ public class StalaciteController : MonoBehaviour
 {
     private Rigidbody _rb;
     public float deleteObjectDelay = 0.2f;
+    public bool breakable = true;
 
     void Start()
     {
@@ -24,13 +25,7 @@ public class StalaciteController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DelayedDelete();
-            Main.HERO_DIED();
-        }
-
-        if (collision.gameObject.CompareTag("Ground"))
+        if (breakable && collision.gameObject.CompareTag("Ground"))
         {
             DelayedDelete();
         }
