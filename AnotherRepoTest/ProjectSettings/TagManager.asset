@@ -8,11 +8,12 @@ TagManager:
   - Ground
   - Platform
   - Spike
+<<<<<<< Updated upstream
+  - Enemy
+=======
   - StalaciteTrigger
-  - JumpBoost
-  - Coin
-  - SpeedBoost
-  - Health
+  - MemoryTrigger
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -47,20 +48,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Background
     uniqueID: 3946938267
     locked: 0
   - name: Midground
     uniqueID: 1894367849
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: Foreground
+    uniqueID: 3395097793
     locked: 0
   - name: Player
     uniqueID: 763684223
-    locked: 0
-  - name: Foreground
-    uniqueID: 3395097793
     locked: 0
   - name: Parallax
     uniqueID: 2668732215
