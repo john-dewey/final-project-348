@@ -28,15 +28,44 @@ public class TriggerManager : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("Player") && this.gameObject.name == "StalaciteTrigger")
+        if (other.CompareTag("Player") && this.tag == "StalaciteTrigger")
         {
             foreach (GameObject currentObject in _objects)
             {
                 Rigidbody rb = currentObject.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
-                // StalaciteController sc = currentObject.GetComponent<StalaciteController>();
-                // sc.isFalling();
             }
+        }
+
+        if (other.CompareTag("Player") && this.tag == "JumpBoost")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._thrust += 15;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "Coin")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._score += 1;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "SpeedBoost")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
+            PC._speed += 5;
+        }
+
+        if (other.CompareTag("Player") && this.tag == "Health")
+        {
+            Destroy(gameObject);
+
+            PlayerController PC = other.GetComponent<PlayerController>();
         }
     }
 }

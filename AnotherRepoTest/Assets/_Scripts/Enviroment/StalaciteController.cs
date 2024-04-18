@@ -6,9 +6,9 @@ public class StalaciteController : MonoBehaviour
 {
     private Rigidbody _rb;
     public float deleteObjectDelay = 0.2f;
-    public bool hasFell = false;
+    public bool breakable = true;
 
-    void start()
+    void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
     }
@@ -23,20 +23,9 @@ public class StalaciteController : MonoBehaviour
         Destroy(gameObject);                      
     }
 
-    public void isFalling()
-    {
-        hasFell = true;
-    }
-
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(collision.gameObject);
-            Main.HERO_DIED();
-        }
-
-        if (collision.gameObject.CompareTag("Ground"))
+        if (breakable && collision.gameObject.CompareTag("Ground"))
         {
             DelayedDelete();
         }
