@@ -25,7 +25,7 @@ public class StalaciteController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (breakable && collision.gameObject.CompareTag("Ground"))
+        if (breakable && (collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("Platform")) )
         {
             DelayedDelete();
         }
