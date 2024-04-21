@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Jump
+        if(!PauseMenu.isPaused)
+        {
+            // Jump
         if (Input.GetAxis("Vertical") > 0 && _isGrounded)
         {
             Jump();
@@ -45,6 +47,8 @@ public class PlayerController : MonoBehaviour
         {
             Idle();
         }
+        }
+        
     }
 
     void Idle()
