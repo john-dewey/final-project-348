@@ -32,23 +32,11 @@ public class Platform : MonoBehaviour
             movingRight = false; // Change direction to left
         }
         // Check if the platform has reached its maximum distance to the left
-        else if (transform.position.x <= startPos.x - moveDistance)
+        else if (transform.position.x <= startPos.x)
         {
             movingRight = true; // Change direction to right
         }
     }
-
-    // void OnCollisionStay(Collision collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         float translation = transform.position.x;
-    //         collision.gameObject.transform.position = new Vector3(translation, collision.gameObject.transform.position.y, 0);
-
-
-    //     }
-    // }
-
 
 
 }
