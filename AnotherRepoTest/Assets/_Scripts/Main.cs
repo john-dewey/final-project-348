@@ -40,12 +40,17 @@ public class Main : MonoBehaviour
     void Restart()
     {
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);                         
+        SceneManager.LoadScene(scene.name);
     }
 
     public static void HERO_DIED()
     {
         GravityController.resetGravity();
         _S.DelayedRestart();                                               
+    }
+
+    public static void RESET_GRAVITY()
+    {
+        GravityController.resetGravity();
     }
 }

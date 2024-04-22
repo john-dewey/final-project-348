@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
    public void playGame()
    {
+        Main.RESET_GRAVITY();
         SceneManager.LoadScene(1);
    }
 
