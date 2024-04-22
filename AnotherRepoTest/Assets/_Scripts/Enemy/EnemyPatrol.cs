@@ -147,6 +147,7 @@ public class EnemyPatrol : MonoBehaviour
 
     public bool IsPlayerInRange(float radius)
     {
+        if (player == null) return false;
         return Vector3.Distance(transform.position, player.position) <= radius;
     }
 }

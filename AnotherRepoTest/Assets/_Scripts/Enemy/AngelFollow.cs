@@ -22,9 +22,20 @@ public class AngelFollow : MonoBehaviour
     void Update()
     {
         animator.Play("follow");
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
+
+        if(player == null)
+        {
+        
+            Vector2 direction = transform.position;
+            direction.Normalize();
+        }
+        else
+        {
+            distance = Vector2.Distance(transform.position, player.transform.position);
+            Vector2 direction = player.transform.position - transform.position;
+            direction.Normalize();
+        }
+        
 
         Vector2 target = getY();
        
@@ -38,8 +49,9 @@ public class AngelFollow : MonoBehaviour
 
     private Vector2 getY()
     {
-        Vector2 abovePlayer = player.transform.position;
+        if (player == null) return transform.position;
 
+        Vector2 abovePlayer = player.transform.position;
         if(Physics.gravity.y < 0)
         {
             abovePlayer.y = abovePlayer.y + offset;
