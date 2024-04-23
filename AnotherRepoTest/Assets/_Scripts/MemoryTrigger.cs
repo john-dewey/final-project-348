@@ -17,5 +17,7 @@ public class MemoryTrigger : MonoBehaviour
         {
             memoryPieceScript.TriggerDialouge();
         }
+
+        
     }
 }
