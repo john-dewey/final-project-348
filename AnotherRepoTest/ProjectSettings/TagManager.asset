@@ -13,6 +13,8 @@ TagManager:
   - Coin
   - SpeedBoost
   - Health
+  - GateKey
+  - DeathDrop
   layers:
   - Default
   - TransparentFX
