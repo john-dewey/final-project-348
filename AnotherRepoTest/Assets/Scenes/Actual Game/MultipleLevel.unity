@@ -49402,7 +49402,7 @@ MonoBehaviour:
 '
     - 'I am the Guardian Angel of your mind. You created me long ago to protect your
       mind from any dangers that may try to harm you. '
-    - Your memories have been scattered around this labyrnth that you built in here...you
+    - Your memories have been scattered around this labyrinth that you built in here...you
       might come across them. But beware travelling in here, there are enemies, traps
       and all sorts of danger. I've given you a sword to help you and I will tag
       along to help explain things to you. Good luck!
@@ -57204,6 +57204,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: dialouge.name
+      value: Memory Recovered...
+      objectReference: {fileID: 0}
+    - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: dialouge.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: dialouge.sentences.Array.data[0]
+      value: Where... where am I? Everything's spinning... No, not again. I remember
+        now... the crash. The blinding lights, the screeching tires... the sickening
+        crunch of metal. It's all rushing back to me, like a tidal wave of agony
+        crashing over my shattered soul. The pain... it's unbearable.
+      objectReference: {fileID: 0}
+    - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: dialouge.sentences.Array.data[1]
+      value: How could I have forgotten something so harrowing? Was it my mind's
+        way of protecting me, or simply another cruel twist of fate?
+      objectReference: {fileID: 0}
+    - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: dialouge.sentences.Array.data[2]
+      value: "No matter... I'm trapped in this nightmare, reliving the horror over
+        and over again. But I won't let it consume me. I'll face this memory, no
+        matter how much it tears me apart. It's the only way to claw my way out of
+        this abyss of despair.\u201D\r\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 1778351987771724089, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
       propertyPath: m_RootOrder
       value: 31
