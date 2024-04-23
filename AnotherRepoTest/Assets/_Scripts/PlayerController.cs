@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             this._isGrounded = true;
     		transform.parent = collision.transform;
 		}
-        if (collision.gameObject.tag == "Spike")
+        if (collision.gameObject.tag == "Spike" || collision.gameObject.tag == "DeathDrop")
         {
             GravityController.resetGravity();
             DelayedRestart();     

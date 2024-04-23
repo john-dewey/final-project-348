@@ -30,10 +30,21 @@ public class TriggerManager : MonoBehaviour
 
         if (other.CompareTag("Player") && this.tag == "StalaciteTrigger")
         {
+            Destroy(gameObject);
             foreach (GameObject currentObject in _objects)
             {
                 Rigidbody rb = currentObject.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
+            }
+            
+        }
+
+        if (other.CompareTag("Player") && this.tag == "GateKey")
+        {
+            Destroy(gameObject);
+            foreach (GameObject currentObject in _objects)
+            {
+                Destroy(currentObject);
             }
         }
 
