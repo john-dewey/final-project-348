@@ -44,6 +44,16 @@ public class TriggerManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (other.CompareTag("Player") && this.tag == "GateKey")
+        {
+            foreach (GameObject currentObject in _objects)
+            {
+                    Destroy(currentObject);
+            }
+            //destroy the trigger when is used
+            Destroy(gameObject);
+        }
+
         if (other.CompareTag("Player") && this.tag == "JumpBoost")
         {
             Destroy(gameObject);
@@ -78,9 +88,6 @@ public class TriggerManager : MonoBehaviour
             Health playerHealth = other.GetComponent<Health>();
             float healthIncreaseAmount = 1f;
             playerHealth.CollectHeart(healthIncreaseAmount);
-            
-
-
         }
     }
 }
