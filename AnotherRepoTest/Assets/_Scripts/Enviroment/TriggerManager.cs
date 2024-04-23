@@ -8,6 +8,7 @@ public class TriggerManager : MonoBehaviour
     private SpriteRenderer _renderer;
     private Animator _animator;
 
+
     private void OnTriggerEnter(Collider other)
     {
         _renderer = other.gameObject.GetComponent<SpriteRenderer>();
@@ -30,22 +31,17 @@ public class TriggerManager : MonoBehaviour
 
         if (other.CompareTag("Player") && this.tag == "StalaciteTrigger")
         {
-            Destroy(gameObject);
             foreach (GameObject currentObject in _objects)
             {
                 Rigidbody rb = currentObject.GetComponent<Rigidbody>();
-                rb.isKinematic = false;
-            }
-            
-        }
 
-        if (other.CompareTag("Player") && this.tag == "GateKey")
-        {
-            Destroy(gameObject);
-            foreach (GameObject currentObject in _objects)
-            {
-                Destroy(currentObject);
+                if (rb != null)
+                {
+                    rb.isKinematic = false;
+                }
             }
+            //destroy the trigger when is used
+            Destroy(gameObject);
         }
 
         if (other.CompareTag("Player") && this.tag == "JumpBoost")
@@ -75,8 +71,16 @@ public class TriggerManager : MonoBehaviour
         if (other.CompareTag("Player") && this.tag == "Health")
         {
             Destroy(gameObject);
+            
 
             PlayerController PC = other.GetComponent<PlayerController>();
+            // Check if the player collides with an object tagged as "Health"
+            Health playerHealth = other.GetComponent<Health>();
+            float healthIncreaseAmount = 1f;
+            playerHealth.CollectHeart(healthIncreaseAmount);
+            
+
+
         }
     }
 }
