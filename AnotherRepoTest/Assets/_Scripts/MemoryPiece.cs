@@ -9,4 +9,6 @@ public class MemoryPiece : MonoBehaviour
     {
         FindObjectOfType<DialougeManager>().StartDialouge(dialouge);
     }
+
+    
 }

@@ -56516,10 +56516,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
       propertyPath: dialouge.sentences.Array.data[2]
-      value: "No matter... I'm trapped in this nightmare, reliving the horror over
-        and over again. But I won't let it consume me. I'll face this memory, no
-        matter how much it tears me apart. It's the only way to claw my way out of
-        this abyss of despair.\u201D\r\n"
+      value: 'No matter... I''m trapped in this nightmare, reliving the horror over
+        and over again. But I won''t let it consume me. I''ll face this memory, no
+        matter how much it tears me apart. It''s the only way to claw my way out
+        of this abyss of despair.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 1778351987771724089, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
       propertyPath: m_RootOrder
