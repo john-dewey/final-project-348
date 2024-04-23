@@ -7,6 +7,10 @@ public class MemoryTrigger : MonoBehaviour
     private SpriteRenderer _renderer;
     private Animator _animator;
 
+    public GameObject DialougeBox;
+
+    public LevelLoader levelLoader;
+
     public MemoryPiece memoryPieceScript;
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +21,6 @@ public class MemoryTrigger : MonoBehaviour
         {
             memoryPieceScript.TriggerDialouge();
         }
-
-        
+       
     }
 }

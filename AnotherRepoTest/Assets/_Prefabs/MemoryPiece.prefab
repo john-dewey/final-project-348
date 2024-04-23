@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1778351987771724088}
   - component: {fileID: 1778351987771724090}
   - component: {fileID: 468859090453861482}
+  - component: {fileID: 8939048136670612738}
   - component: {fileID: 468859090453861477}
   m_Layer: 0
   m_Name: MemoryPiece
@@ -113,6 +114,19 @@ MonoBehaviour:
   dialouge:
     name: 
     sentences: []
+--- !u!114 &8939048136670612738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778351987771724093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cd944902413426fbfafa7a58479d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transition: {fileID: 0}
 --- !u!114 &468859090453861477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5d7dd8247842b499c15671133ed4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialougeManager: {fileID: 0}
+  levelLoader: {fileID: 0}
   memoryPieceScript: {fileID: 468859090453861482}
