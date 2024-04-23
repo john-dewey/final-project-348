@@ -482,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 7802171710262260055, guid: 868e823dfb69e284da99965677b5fc9b, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1862595273}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868e823dfb69e284da99965677b5fc9b, type: 3}
 --- !u!20 &425589353 stripped
@@ -50998,9 +50998,9 @@ GameObject:
   m_Component:
   - component: {fileID: 528473002}
   - component: {fileID: 528472999}
-  - component: {fileID: 528472998}
   - component: {fileID: 528473003}
   - component: {fileID: 528473000}
+  - component: {fileID: 528472998}
   m_Layer: 0
   m_Name: Angel
   m_TagString: Untagged
@@ -51017,12 +51017,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 528472997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c94577fbd5dee4a3ca77ca7f52716fc0, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f9613aeacc04e028d8cb6ffedeb76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 3.5
-  offset: 5
 --- !u!136 &528472999
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -51096,7 +51093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528472997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9456885, y: 2.2687864, z: -5.1764274}
+  m_LocalPosition: {x: 0, y: 6, z: -5.1764274}
   m_LocalScale: {x: 1.5, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52740,6 +52737,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1862595273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3554941297284044939, guid: 988546a826fc8164fbdd285d2d50c999, type: 3}
+  m_PrefabInstance: {fileID: 6054547002380513274}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994435810
 GameObject:
   m_ObjectHideFlags: 0
