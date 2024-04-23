@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public bool Rightdirec = true;
     public float gameRestartDelay = 0.5f;
 
+    public AudioSource runAudio;
+    public AudioSource jumpAudio;
+    public float runSpeed = 1.5f;
+
     void Start()
     {
         _transform = gameObject.GetComponent<Transform>();
@@ -26,29 +30,45 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!PauseMenu.isPaused)
+        runAudio.pitch = runSpeed;
+        if (!PauseMenu.isPaused)
         {
             // Jump
-        if (Input.GetAxis("Vertical") > 0 && _isGrounded)
-        {
-            Jump();
-            this._isGrounded = false;
-        }
-        else if (Input.GetAxis("Horizontal") != 0)
-        {
-            Move();
-        }
-        else if (Input.GetButton("Jump")) // Check if the "top" key is pressed
-        {
-            Attack(); // Play attack animation
-        }
+            if (Input.GetAxis("Vertical") > 0 && _isGrounded)
+            {
+                jumpAudio.enabled = true;
+                StartCoroutine(StopJumpSoundAfterDelay(0.49f));
+                runAudio.enabled = false;
 
-        else
-        {
-            Idle();
+                Jump();
+                this._isGrounded = false;
+            }
+            else if (Input.GetAxis("Horizontal") != 0)
+            {
+                if (_isGrounded)
+                {
+
+                    runAudio.enabled = true;
+                }
+                else
+                {
+
+                    runAudio.enabled = false;
+                }
+                Move();
+            }
+            else if (Input.GetButton("Jump")) // Check if the "top" key is pressed
+            {
+                Attack(); // Play attack animation
+            }
+
+            else
+            {
+                runAudio.enabled = false;
+
+                Idle();
+            }
         }
-        }
-        
     }
 
     void Idle()
@@ -90,6 +110,7 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded)
         {
             _animator.Play("walk");
+            //runAudio.enabled = true;
         }
 
         transform.Translate(translation, 0, 0);
@@ -112,15 +133,15 @@ public class PlayerController : MonoBehaviour
         {
             this._isGrounded = true;
         }
-        if(collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform")
         {
             this._isGrounded = true;
-    		transform.parent = collision.transform;
-		}
+            transform.parent = collision.transform;
+        }
         if (collision.gameObject.tag == "Spike" || collision.gameObject.tag == "DeathDrop")
         {
             GravityController.resetGravity();
-            DelayedRestart();     
+            DelayedRestart();
         }
     }
 
@@ -130,10 +151,11 @@ public class PlayerController : MonoBehaviour
         {
             this._isGrounded = false;
         }
-        if(collision.gameObject.tag == "Platform"){
-    		transform.parent = null;
+        if (collision.gameObject.tag == "Platform")
+        {
+            transform.parent = null;
             this._isGrounded = false;
-		}
+        }
     }
 
     void rotatePlayer(int direction)
@@ -145,11 +167,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void DelayedRestart()
-    {     
-        Destroy(gameObject);                                           
+    {
+        Destroy(gameObject);
         Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);  
+        SceneManager.LoadScene(scene.name);
         //Invoke(nameof(Restart), gameRestartDelay);
     }
 
+    public IEnumerator StopJumpSoundAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        jumpAudio.enabled = false;
+        Debug.Log("hello");
+    }
 }
