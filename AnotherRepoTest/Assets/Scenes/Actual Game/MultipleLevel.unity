@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -51917,6 +51917,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357911641}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1381587017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6216062402540845004, guid: 319ae68af79cb4c439566706efb0f3e1, type: 3}
+  m_PrefabInstance: {fileID: 1317052445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1383239507
 GameObject:
   m_ObjectHideFlags: 0
@@ -56494,6 +56499,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468859090453861477, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: DialougeBox
+      value: 
+      objectReference: {fileID: 1381587017}
+    - target: {fileID: 468859090453861477, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 468859090100390702}
+    - target: {fileID: 468859090453861477, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+      propertyPath: DialougeManager
+      value: 
+      objectReference: {fileID: 154897106}
     - target: {fileID: 468859090453861482, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
       propertyPath: dialouge.name
       value: Memory Recovered...
@@ -56573,6 +56590,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+--- !u!114 &468859090100390702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8939048136670612738, guid: e3e0cee3f1a9cb94486194433a912206, type: 3}
+  m_PrefabInstance: {fileID: 468859090100390701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cd944902413426fbfafa7a58479d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1394746419187035211
 PrefabInstance:
   m_ObjectHideFlags: 0

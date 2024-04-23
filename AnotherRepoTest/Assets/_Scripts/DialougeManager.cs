@@ -13,6 +13,8 @@ public class DialougeManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    public bool dialogueEnd;
+
 
     // Start is called before the first frame update
     void Start()
